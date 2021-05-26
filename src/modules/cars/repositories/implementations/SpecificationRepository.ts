@@ -1,4 +1,4 @@
-import {Specification} from "../../models/Specification";
+import {Specification} from "../../entities/Specification";
 import {ISpecificationRepository, ISpecificationRepositoryDTO} from "../ISpecificationRepository";
 
 class SpecificationRepository implements ISpecificationRepository {
@@ -14,14 +14,14 @@ class SpecificationRepository implements ISpecificationRepository {
 		Object.assign(specification, {
 			name,
 			description,
-			created_at: new Date()
+			created_at: new Date(),
 		});
 
 		this.specification.push(specification);
 	}
 
 	findByName(name: string): Specification {
-		const specification = this.specification.find(specification => specification.name === name);
+		const specification = this.specification.find((specification) => specification.name === name);
 
 		return specification;
 	}
