@@ -1,4 +1,5 @@
 import {inject, injectable} from "tsyringe";
+import {AppError} from "../../../../errors/AppError";
 import {ICategoryRepository} from "../../repositories/ICategoryRepository";
 
 interface IRequest {
@@ -18,7 +19,7 @@ class CreateCategoryUseCase {
 		console.log("create category use case");
 
 		if (categoryAllReadyExists) {
-			throw new Error("Category all ready exists");
+			throw new AppError("Category all ready exists");
 		}
 
 		this.categoriesRepository.create({name, description});
